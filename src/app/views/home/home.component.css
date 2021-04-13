@@ -1,0 +1,19 @@
+.toolbar {
+  font-size: 1.5rem;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
