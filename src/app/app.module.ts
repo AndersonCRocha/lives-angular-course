@@ -3,16 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomeComponent } from './views/home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTabsModule } from '@angular/material/tabs';
+
+import { HomeComponent } from './views/home/home.component';
+import { LiveListComponent } from './views/home/live-list/live-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    LiveListComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +24,8 @@ import { MatButtonModule } from '@angular/material/button';
     AppRoutingModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
