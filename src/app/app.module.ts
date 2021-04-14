@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
@@ -29,7 +30,8 @@ import { LiveListComponent } from './views/home/live-list/live-list.component';
     MatIconModule,
     MatButtonModule,
     MatTabsModule,
-    MatCardModule
+    MatCardModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -22,4 +22,8 @@ export class LiveService {
   public getLivesByFlag(flag: string): Observable<ResponsePageable> {
     return this.httpClient.get<ResponsePageable>(`${this.apiBaseUri}?flag=${flag}`)
   }
+
+  public getLivesFakeApi(): Observable<ResponsePageable> {
+    return this.httpClient.get<ResponsePageable>('https://api.mocki.io/v2/46638204')
+  }
 }

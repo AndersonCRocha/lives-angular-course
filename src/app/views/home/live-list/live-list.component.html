@@ -1,7 +1,40 @@
 <mat-tab-group mat-align-tabs="start" class="tabs">
   <mat-tab label="PRÓXIMAS">
     <div fxLayout="row" fxLayoutAlign="start center" class="content-wrapper">
-      <div class="card-wrapper">
+      <ng-container *ngFor="let live of previousLives" class="card-wrapper">
+        <mat-card
+          class="card"
+          fxFlex="0 1 calc(33.3% - .8rem)"
+          fxFlex.lt-md="0 1 calc(50% - .8rem)"
+          fxFlex.lt-sm="100%"
+        >
+          <mat-card-title class="card-title">
+            <div class="row flex-between">
+              <h2>
+                {{ live.liveName }}
+              </h2>
+              <span>
+                {{ live.liveDate }}
+              </span>
+            </div>
+            <div class="row">
+              <span>Canal: {{ live.channelName }}</span>
+            </div>
+          </mat-card-title>
+          <mat-card-content>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
+            maiores a repudiandae dolorum non error voluptatum tenetur vitae
+            quis ex esse, animi consequatur consectetur natus molestiae,
+            deserunt minima adipisci similique?
+          </mat-card-content>
+        </mat-card>
+      </ng-container>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="REALIZADAS">
+    <div fxLayout="row" fxLayoutAlign="start center" class="content-wrapper">
+      <ng-container *ngFor="let item of previousLives" class="card-wrapper">
         <mat-card
           fxFlex="0 1 calc(33.3% - .8rem)"
           fxFlex.lt-md="0 1 calc(50% - .8rem)"
@@ -15,8 +48,7 @@
             deserunt minima adipisci similique?
           </mat-card-content>
         </mat-card>
-      </div>
+      </ng-container>
     </div>
   </mat-tab>
-  <mat-tab label="REALIZADAS">Content 2</mat-tab>
 </mat-tab-group>

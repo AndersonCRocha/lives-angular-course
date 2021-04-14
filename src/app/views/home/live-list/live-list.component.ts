@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Live } from 'src/app/shared/model/live.model';
+import { LiveService } from 'src/app/shared/service/live.service';
 
 @Component({
   selector: 'app-live-list',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LiveListComponent implements OnInit {
 
-  constructor() { }
+  previousLives: Live[]
+  nextLives: Live[]
+
+  constructor(
+    private liveService: LiveService
+  ) { }
 
   ngOnInit(): void {
+    this.getLives()
   }
 
+  getLives() {
+    this.liveService.getLivesFakeApi().subscribe(({ contents }) => {
+      this.previousLives = contents
+    })
+
+    this.liveService.getLivesFakeApi().subscribe(({ contents }) => {
+      this.nextLives = contents
+    })
+  }
 }
