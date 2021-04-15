@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { forkJoin } from 'rxjs';
 import { Live } from 'src/app/shared/model/live.model';
 import { LiveService } from 'src/app/shared/service/live.service';
 
@@ -9,11 +11,13 @@ import { LiveService } from 'src/app/shared/service/live.service';
 })
 export class LiveListComponent implements OnInit {
 
-  previousLives: Live[]
-  nextLives: Live[]
+  exampleVideoUrl: string = 'https://www.youtube.com/embed/9_FBCMlqTmM?list=PL8iIphQOyG-DSLV6qWs8wh37o0R_F9Q_Q';
+  previousLives: Live[] = [];
+  nextLives: Live[] = [];
 
   constructor(
-    private liveService: LiveService
+    private liveService: LiveService,
+    private sanitizer: DomSanitizer,
   ) { }
 
   ngOnInit(): void {
@@ -21,12 +25,20 @@ export class LiveListComponent implements OnInit {
   }
 
   getLives() {
-    this.liveService.getLivesFakeApi().subscribe(({ contents }) => {
-      this.previousLives = contents
-    })
+    forkJoin([
+      this.liveService.getLivesFakeApi(),
+      this.liveService.getLivesFakeApi()
+    ]).subscribe(([previous, next]) => {
+      this.previousLives = previous.contents.map((live: Live) => ({
+        ...live,
+        urlSafe: this.sanitizer.bypassSecurityTrustResourceUrl(this.exampleVideoUrl)
+      }))
 
-    this.liveService.getLivesFakeApi().subscribe(({ contents }) => {
-      this.nextLives = contents
+      this.nextLives = next.contents.map((live: Live) => ({
+        ...live,
+        urlSafe: this.sanitizer.bypassSecurityTrustResourceUrl(this.exampleVideoUrl)
+        // urlSafe: this.sanitizer.bypassSecurityTrustResourceUrl(live.liveLink)
+      }))
     })
   }
 }

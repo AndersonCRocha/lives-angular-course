@@ -1,53 +1,26 @@
 <mat-tab-group mat-align-tabs="start" class="tabs">
   <mat-tab label="PRÓXIMAS">
     <div fxLayout="row" fxLayoutAlign="start center" class="content-wrapper">
-      <ng-container *ngFor="let live of previousLives" class="card-wrapper">
-        <mat-card
-          class="card"
+      <ng-container *ngFor="let live of nextLives">
+        <app-live-card
+          [live]="live"
           fxFlex="0 1 calc(33.3% - .8rem)"
           fxFlex.lt-md="0 1 calc(50% - .8rem)"
           fxFlex.lt-sm="100%"
-        >
-          <mat-card-title class="card-title">
-            <div class="row flex-between">
-              <h2>
-                {{ live.liveName }}
-              </h2>
-              <span>
-                {{ live.liveDate }}
-              </span>
-            </div>
-            <div class="row">
-              <span>Canal: {{ live.channelName }}</span>
-            </div>
-          </mat-card-title>
-          <mat-card-content>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
-            maiores a repudiandae dolorum non error voluptatum tenetur vitae
-            quis ex esse, animi consequatur consectetur natus molestiae,
-            deserunt minima adipisci similique?
-          </mat-card-content>
-        </mat-card>
+        ></app-live-card>
       </ng-container>
     </div>
   </mat-tab>
 
   <mat-tab label="REALIZADAS">
     <div fxLayout="row" fxLayoutAlign="start center" class="content-wrapper">
-      <ng-container *ngFor="let item of previousLives" class="card-wrapper">
-        <mat-card
+      <ng-container *ngFor="let live of previousLives">
+        <app-live-card
+          [live]="live"
           fxFlex="0 1 calc(33.3% - .8rem)"
           fxFlex.lt-md="0 1 calc(50% - .8rem)"
           fxFlex.lt-sm="100%"
-        >
-          <mat-card-header> </mat-card-header>
-          <mat-card-content>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
-            maiores a repudiandae dolorum non error voluptatum tenetur vitae
-            quis ex esse, animi consequatur consectetur natus molestiae,
-            deserunt minima adipisci similique?
-          </mat-card-content>
-        </mat-card>
+        ></app-live-card>
       </ng-container>
     </div>
   </mat-tab>

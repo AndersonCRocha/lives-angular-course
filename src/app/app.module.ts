@@ -14,12 +14,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
 import { LiveListComponent } from './views/home/live-list/live-list.component';
+import { LiveCardComponent } from './views/home/live-card/live-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LiveListComponent
+    LiveListComponent,
+    LiveCardComponent,
   ],
   imports: [
     BrowserModule,

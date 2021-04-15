@@ -1,0 +1,27 @@
+<ng-container class="card-wrapper">
+  <mat-card class="card">
+    <mat-card-title class="card-title">
+      <div class="row flex-between">
+        <h2>
+          {{ live.liveName }}
+        </h2>
+        <span>
+          {{ live.liveDate }}
+        </span>
+      </div>
+      <div class="row">
+        <span>Canal: {{ live.channelName }}</span>
+      </div>
+    </mat-card-title>
+    <mat-card-content fxLayout="center center">
+      <div class="w-100">
+        <iframe
+          [src]="live.urlSafe"
+          class="iframe-youtube"
+          allow="accelerometer; autoplay; encripted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</ng-container>
